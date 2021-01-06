@@ -1,4 +1,4 @@
-package com.datastructures;
+package com.datastructures.structures;
 
 import java.util.Iterator;
 
@@ -10,16 +10,7 @@ public class DynamicArray <T> implements Iterable<T> {
 	private int length = 0;
 	
 	public DynamicArray() {
-		this.capacity = 32;
-		this.arr = (T[]) new Object[capacity];
-	}
-	
-	public DynamicArray(int cap) {
-		if(cap <= 0) {
-			throw new IllegalArgumentException(cap + "is an Illegal Capacity");
-		}
-		
-		this.capacity = cap;
+		this.capacity = 0;
 		this.arr = (T[]) new Object[capacity];
 	}
 	
@@ -28,7 +19,7 @@ public class DynamicArray <T> implements Iterable<T> {
 	}
 	
 	public boolean isEmpty() {
-		return length == 0;
+		return size() == 0;
 	}
 	
 	public T get(int index) {
@@ -47,7 +38,19 @@ public class DynamicArray <T> implements Iterable<T> {
 	}
 	
 	public void add(T element) {
+		//+1 length
+		capacity++;
+		T[] new_arr = (T[]) new Object[capacity];
 		
+		//copy from old array to new
+		for(int i=0; i<length; i++) {
+			new_arr[i] = arr[i];
+		}
+		
+		//add element!
+		new_arr[capacity - 1] = element;
+		this.arr = new_arr;
+		length++;
 	}
 	
 	@Override
