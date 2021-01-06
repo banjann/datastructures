@@ -22,4 +22,8 @@ public class DynamicArrayTest {
 		assertEquals(2, da.size());
 	}
 
+	@Test
+	public void testDynamicArray_isEmpty() {
+		
+	}
 }

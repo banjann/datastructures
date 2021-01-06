@@ -53,6 +53,10 @@ public class DynamicArray <T> implements Iterable<T> {
 		length++;
 	}
 	
+	public void removeAt(int index) {
+		
+	}
+	
 	@Override
 	public Iterator<T> iterator() {
 		// TODO Auto-generated method stub
