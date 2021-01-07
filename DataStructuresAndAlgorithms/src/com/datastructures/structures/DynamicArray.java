@@ -59,11 +59,11 @@ public class DynamicArray <T> implements Iterable<T> {
 		if (index >= size() ) {
 			throw new IndexOutOfBoundsException();
 		}
-		
+		//make a new index with less than 1 capacity
 		T[] new_arr = (T[]) new Object[size() - 1];
-		
+		//copy everything to the new array except the element to remove
 		for(int i=0, j=0; i<size(); i++, j++) {
-			if(i == index) {
+			if(i == index) { //the new array counting should continue while the counting for old array should skip
 				j--;
 			} else {
 				new_arr[j] = arr[i];
