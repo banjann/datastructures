@@ -27,7 +27,11 @@ public class DynamicArray <T> implements Iterable<T> {
 	}
 	
 	public void set(int index, T element) {
-		arr[index] = element;
+		if(index >= size() ) {
+			throw new IndexOutOfBoundsException();
+		} else {
+			arr[index] = element;
+		}
 	}
 
 	public void clearAll() {
@@ -41,12 +45,10 @@ public class DynamicArray <T> implements Iterable<T> {
 		//+1 length
 		capacity++;
 		T[] new_arr = (T[]) new Object[capacity];
-		
 		//copy from old array to new
 		for(int i=0; i<length; i++) {
 			new_arr[i] = arr[i];
 		}
-		
 		//add element!
 		new_arr[capacity - 1] = element;
 		this.arr = new_arr;
@@ -54,7 +56,21 @@ public class DynamicArray <T> implements Iterable<T> {
 	}
 	
 	public void removeAt(int index) {
+		if (index >= size() ) {
+			throw new IndexOutOfBoundsException();
+		}
 		
+		T[] new_arr = (T[]) new Object[size() - 1];
+		
+		for(int i=0, j=0; i<size(); i++, j++) {
+			if(i == index) {
+				j--;
+			} else {
+				new_arr[j] = arr[i];
+			}
+		}
+		length--;
+		this.arr = new_arr;
 	}
 	
 	@Override
