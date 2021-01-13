@@ -42,4 +42,6 @@ public class Main {
 		}
 		return isValid;
 	}
+	
+	private static boolean
 }
